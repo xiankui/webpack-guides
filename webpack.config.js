@@ -1,10 +1,17 @@
 const path = require('path')
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
 module.exports = {
-	entry: './src/index.js',
+	// 多入口，则打包出对应的文件
+	entry: {
+		app: './src/index.js',
+		vendor: ['lodash', 'react', 'react-dom']
+	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.js'
+		filename: '[name].bundle.js'
 	},
 	module: {
 		rules: [{ // 对.js文件中导入的.css文件进行解析，并以样式的形式添加到head中
@@ -19,5 +26,13 @@ module.exports = {
 				'file-loader'
 			]
 		}]
-	}
+	},
+
+	plugins: [
+		// 自动生成index.html文件到output.path目录下，并把打包出的文件插入进去；貌似不实用
+    new HtmlWebpackPlugin({
+      title: 'Output Management',
+      favicon: './favicon.ico'
+    })
+  ]
 }
