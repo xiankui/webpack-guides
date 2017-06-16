@@ -1,0 +1,8 @@
+body {
+	background-image: url('./logo.svg')
+}
+
+div {
+	font-size: 20px;
+	color: blue;
+}
