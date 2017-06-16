@@ -1,4 +1,7 @@
+
+
 body {
+	/* 当样式中有图片资源时，必须用	`file-loader`进行解析，生成类似 background-image: url(xxxxxx.svg); */
 	background-image: url('./logo.svg')
 }
 
