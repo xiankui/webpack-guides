@@ -1,3 +1,5 @@
+
+const webpack = require('webpack')
 const path = require('path')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -7,7 +9,7 @@ module.exports = {
 	// 多入口，则打包出对应的文件
 	entry: {
 		app: './src/index.js',
-		vendor: ['lodash', 'react', 'react-dom']
+		// vendor: ['lodash', 'react', 'react-dom']
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -31,6 +33,13 @@ module.exports = {
 		}]
 	},
 	plugins: [
-		new ExtractTextPlugin('styles.css'),
+		new ExtractTextPlugin('styles.css'), // 提取css
+		new webpack.optimize.CommonsChunkPlugin({  // 提取js library
+      name: 'vendor',
+      minChunks: function (module) {
+				// this assumes your vendor imports exist in the node_modules directory
+				return module.context && module.context.indexOf('node_modules') !== -1;
+      }
+    })
 	]
 }
