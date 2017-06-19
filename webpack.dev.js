@@ -16,7 +16,16 @@ module.exports = {
 		filename: '[name].bundle.js'
 	},
 	module: {
-		rules: [{ // 对.js文件中导入的.css文件进行解析，并以样式的形式添加到head中
+		rules: [{
+			test: /\.js$/,
+			exclude: /(node_modules)/,
+			use: [{
+				loader: 'babel-loader',  // babel解析es2015
+				options: {
+					presets: [['es2015', {modules: false}]],
+				}
+			}]
+		},{ // 对.js文件中导入的.css文件进行解析，并以样式的形式添加到head中
 			test: /\.css$/,
 			// use: [
 			// 	'style-loader',

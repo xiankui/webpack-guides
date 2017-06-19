@@ -6,9 +6,7 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23,8 +21,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // 把css模块打包进来，并在js解析时还原为样式添加到头部
 
 
-
-function component () {
+function component() {
   var element = document.createElement('div');
 
   // Lodash, currently included via a script, is required for this line to work
@@ -36,5 +33,5 @@ function component () {
 document.body.appendChild(component());
 
 /***/ })
-],[4]);
+],[2]);
 //# sourceMappingURL=app.bundle.js.map
